@@ -637,13 +637,12 @@ MultiProvider(
 
 # Video y captura de su implementacion
 
-![Imagen de WhatsApp 2025-10-20 a las 10 16 18_377ade93](https://github.com/user-attachments/assets/bd789db0-9506-4daa-8490-c5443f269ba4)
-![Imagen de WhatsApp 2025-10-20 a las 10 16 18_48a47876](https://github.com/user-attachments/assets/89dbbaba-72b5-488f-a88d-fd32cee91407)
-![Imagen de WhatsApp 2025-10-20 a las 10 16 18_f5010985](https://github.com/user-attachments/assets/28ca9a1d-fa9c-4e19-aff2-b32c70f057ec)
-
-![Imagen de WhatsApp 2025-10-20 a las 10 16 18_d862ae9b](https://github.com/user-attachments/assets/06f0495a-c919-4193-85f8-97b479b1d94b)
-
-![Imagen de WhatsApp 2025-10-20 a las 10 16 18_69a4f26c](https://github.com/user-attachments/assets/aa0ac2de-282a-49cc-b2ad-148a700fc01f)
+### Grupo 1
+![Imagen 1](https://github.com/user-attachments/assets/bd789db0-9506-4daa-8490-c5443f269ba4)
+![Imagen 2](https://github.com/user-attachments/assets/89dbbaba-72b5-488f-a88d-fd32cee91407)
+![Imagen 3](https://github.com/user-attachments/assets/28ca9a1d-fa9c-4e19-aff2-b32c70f057ec)
+![Imagen 4](https://github.com/user-attachments/assets/06f0495a-c919-4193-85f8-97b479b1d94b)
+![Imagen 5](https://github.com/user-attachments/assets/aa0ac2de-282a-49cc-b2ad-148a700fc01f)
 
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 25_d7734d84](https://github.com/user-attachments/assets/4fdfacb2-e3b2-4804-b83c-42d1bfa50952)
 
