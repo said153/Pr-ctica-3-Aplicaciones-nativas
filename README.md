@@ -26,11 +26,6 @@ Diseñada con una interfaz moderna que soporta **dos temas (Guinda y Azul)** con
 ## 📦 Dependencias Principales  
 
 ```gradle
-// CameraX
-implementation "androidx.camera:camera-camera2:1.3.0"
-implementation "androidx.camera:camera-lifecycle:1.3.0"
-implementation "androidx.camera:camera-view:1.3.0"
-
 // Room Database
 implementation "androidx.room:room-runtime:2.5.2"
 kapt "androidx.room:room-compiler:2.5.2"
@@ -38,3 +33,40 @@ kapt "androidx.room:room-compiler:2.5.2"
 // Lifecycle & ViewModel
 implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
 implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
+```
+
+📥 Instrucciones de Instalación
+🧩 Instalación desde APK
+
+Descargar el APK:
+
+📦 CamaraAudioApp-v1.0-guinda.apk
+
+📦 CamaraAudioApp-v1.0-azul.apk
+
+Habilitar instalación de fuentes desconocidas:
+
+Ir a: Configuración > Seguridad > Fuentes desconocidas ✅
+
+Instalar el APK:
+
+Abrir el archivo descargado
+
+Pulsar “Instalar”
+
+Esperar confirmación
+
+Conceder permisos al iniciar (ver sección de permisos dentro de la app).
+
+💻 Compilación desde Código Fuente
+# Clonar el repositorio
+git clone https://github.com/said153/Pr-ctica-3-Aplicaciones-nativas.git
+
+# Abrir en Android Studio
+# File > Open > Seleccionar carpeta del proyecto
+
+# Sincronizar Gradle
+# Build > Sync Project with Gradle Files
+
+# Compilar APK
+# Build > Build Bundle(s) / APK(s) > Build APK(s)
