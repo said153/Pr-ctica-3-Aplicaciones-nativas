@@ -637,91 +637,38 @@ MultiProvider(
 
 # Video y captura de su implementacion
 
-### Grupo 1
-![Imagen 1](https://github.com/user-attachments/assets/bd789db0-9506-4daa-8490-c5443f269ba4)
-![Imagen 2](https://github.com/user-attachments/assets/89dbbaba-72b5-488f-a88d-fd32cee91407)
-![Imagen 3](https://github.com/user-attachments/assets/28ca9a1d-fa9c-4e19-aff2-b32c70f057ec)
-![Imagen 4](https://github.com/user-attachments/assets/06f0495a-c919-4193-85f8-97b479b1d94b)
-![Imagen 5](https://github.com/user-attachments/assets/aa0ac2de-282a-49cc-b2ad-148a700fc01f)
-
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_377ade93](https://github.com/user-attachments/assets/bd789db0-9506-4daa-8490-c5443f269ba4) 
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_48a47876](https://github.com/user-attachments/assets/89dbbaba-72b5-488f-a88d-fd32cee91407) 
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_f5010985](https://github.com/user-attachments/assets/28ca9a1d-fa9c-4e19-aff2-b32c70f057ec) 
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_d862ae9b](https://github.com/user-attachments/assets/06f0495a-c919-4193-85f8-97b479b1d94b) 
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_69a4f26c](https://github.com/user-attachments/assets/aa0ac2de-282a-49cc-b2ad-148a700fc01f)
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 25_d7734d84](https://github.com/user-attachments/assets/4fdfacb2-e3b2-4804-b83c-42d1bfa50952)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 26_41096f17](https://github.com/user-attachments/assets/f38f5d10-6d29-4418-8d6f-121efd9aeb25)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 27_80170a7f](https://github.com/user-attachments/assets/331304e7-473c-40c1-9deb-5b86bda6588a)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 27_fd3e8a3f](https://github.com/user-attachments/assets/5e487b6c-5636-4eb7-945b-9fa59521d54b)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 28_ab493c5d](https://github.com/user-attachments/assets/3e56d131-7911-4898-8229-5a92921267e3)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 29_202c7cae](https://github.com/user-attachments/assets/f5a544c8-52e9-427f-9817-b8c01be421c8)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 29_30f5826f](https://github.com/user-attachments/assets/a602a4f3-13e3-49c2-93e1-76d0b21bf894)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 29_37d2ad05](https://github.com/user-attachments/assets/32fd0105-a493-4b13-b7ca-c4478d4a5fe6)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 29_d3d9a97f](https://github.com/user-attachments/assets/4a579407-f07f-4b19-a6c2-74aa93e8bfce)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_4d1f2e12](https://github.com/user-attachments/assets/24d6df0d-a8b0-4d0e-b531-7a6ea68e0f95)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_1807dd24](https://github.com/user-attachments/assets/cdc0a05b-d9a0-4c3d-96b4-f0e8834fea0f)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_a234caa9](https://github.com/user-attachments/assets/79e54e98-9050-47ae-8966-ee5df236c60e)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_3535e39e](https://github.com/user-attachments/assets/0b63d124-c4f8-4903-88cb-193d542a21ba)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_c6ac9ebd](https://github.com/user-attachments/assets/4b5b075f-4769-40e1-99a3-f030ac09e114)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_61857160](https://github.com/user-attachments/assets/e23f47ac-51bf-4a46-8548-18ea98bd3d07)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_96eb7ace](https://github.com/user-attachments/assets/91cfd518-6023-4e22-856a-73c5401d506c)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 30_8ec34f21](https://github.com/user-attachments/assets/98232058-eb90-4bcc-b537-d6a91eff19a6)
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_317a9647](https://github.com/user-attachments/assets/de179f81-9d6c-4ab5-9c30-b92033945407)
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_d5a30cdd](https://github.com/user-attachments/assets/b88a0217-2ad1-4b38-8268-61476d684dac)
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_b07b2de1](https://github.com/user-attachments/assets/80df3ee5-2335-47ae-b906-58fa840826d7)
-
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_0112c262](https://github.com/user-attachments/assets/4f85457c-d96d-4bbd-9b0b-544fbdd1cc70)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_cd062841](https://github.com/user-attachments/assets/4d283441-8d1c-4c42-ba9c-420082aa669d)
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_7d211532](https://github.com/user-attachments/assets/03c3732c-7f64-4958-b639-88a8738d5df1)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_991b3156](https://github.com/user-attachments/assets/8b8b6683-fe32-484b-b1a3-32db0a2ffb47)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_73f0e715](https://github.com/user-attachments/assets/a681be94-2d63-4f78-b883-db3eb63e62a3)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 32_5f8b1bff](https://github.com/user-attachments/assets/e196e963-aab7-421e-9d35-48d252f32e99)
-
-
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 32_752f455d](https://github.com/user-attachments/assets/2636da4d-fdc1-4c10-a9a1-e5b89476b200)
-
-
 https://github.com/user-attachments/assets/6af29bb3-ab78-447c-9ff5-d4bfc22b8c51
 
 
