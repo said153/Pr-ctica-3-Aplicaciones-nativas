@@ -341,4 +341,224 @@ themes.xml - Tema Azul Claro
 </resources>
 ```
 
+### Flujo de Captura de Foto
+```
+Usuario abre app
+      ↓
+Solicita permisos (CAMERA, STORAGE)
+      ↓
+Inicializa CameraX con previsualización
+      ↓
+Usuario configura:
+  • Flash (Auto/On/Off)
+  • Temporizador (0/3/5/10s)
+  • Cámara (Frontal/Trasera)
+  • Filtro (Ninguno/Escala de grises/Sepia/Brillo)
+      ↓
+Usuario presiona botón captura
+      ↓
+¿Temporizador activo?
+  Sí → Cuenta regresiva + feedback visual/sonoro
+  No → Captura inmediata
+      ↓
+Aplica filtro seleccionado
+      ↓
+Guarda en almacenamiento local
+      ↓
+Registra en MediaStore API
+      ↓
+Guarda metadatos en Room DB:
+  • URI, fecha, ubicación, etiquetas
+  • Configuración usada (flash, filtro, lente)
+      ↓
+Muestra miniatura + Feedback háptico
+      ↓
+Usuario puede:
+  • Ver en galería
+  • Compartir
+  • Editar
+  • Eliminar
+```
+
+### Flujo de Grabación de Audio
+```
+Usuario selecciona pestaña Audio
+      ↓
+Solicita permiso RECORD_AUDIO
+      ↓
+Usuario configura:
+  • Calidad (Alta/Media/Baja)
+  • Temporizador límite
+      ↓
+Usuario presiona GRABAR
+      ↓
+Inicializa MediaRecorder
+      ↓
+Comienza grabación
+      ↓
+Actualiza visualización de nivel en tiempo real
+  (cada 100ms consulta getMaxAmplitude())
+      ↓
+Usuario puede:
+  • Pausar → MediaRecorder.pause()
+  • Reanudar → MediaRecorder.resume()
+  • Detener → MediaRecorder.stop()
+      ↓
+Al detener:
+  Guarda archivo .m4a
+      ↓
+  Registra en MediaStore
+      ↓
+  Guarda metadatos en Room DB:
+    • URI, duración, calidad, fecha
+      ↓
+  Muestra en lista de grabaciones
+      ↓
+Usuario puede:
+  • Reproducir
+  • Compartir
+  • Renombrar
+  • Eliminar
+```
+
+## 📖 Guía de Usuario
+
+### Primeros Pasos
+
+1. **Instalación**
+   - Descarga el APK desde el repositorio
+   - Habilita "Fuentes desconocidas" en ajustes
+   - Instala el APK
+   - Abre la aplicación
+
+2. **Concesión de Permisos**
+   - Al abrir por primera vez, concede los permisos:
+     - ✅ Cámara: Para tomar fotos
+     - ✅ Micrófono: Para grabar audio
+     - ✅ Almacenamiento: Para guardar archivos
+
+3. **Interfaz Principal**
+   - **Pestaña Cámara**: Captura de fotos
+   - **Pestaña Audio**: Grabación de audio
+   - **Pestaña Galería**: Visualización de archivos
+
+### Capturar Fotos
+```
+┌─────────────────────────────────────┐
+│  [⚙️]              [🔄]        [⚡]  │ Configuración
+│                                     │
+│                                     │
+│          📷 PREVISUALIZACIÓN        │
+│                                     │
+│                                     │
+│  [🎨]  [⏱️]  [📸]  [🖼️]           │ Controles
+└─────────────────────────────────────┘
+
+Controles:
+🎨 Filtros    - Aplicar efectos
+⏱️ Temporizador - 3, 5 o 10 segundos
+📸 Captura    - Tomar foto
+🖼️ Galería   - Ver fotos guardadas
+⚡ Flash      - Auto/On/Off
+🔄 Cambiar    - Frontal/Trasera
+```
+
+**Pasos**:
+1. Ajusta el flash (⚡) según iluminación
+2. Selecciona filtro si deseas (🎨)
+3. Configura temporizador opcional (⏱️)
+4. Presiona el botón de captura (📸)
+5. La foto se guarda automáticamente
+
+### Grabar Audio
+```
+┌─────────────────────────────────────┐
+│         🎙️ GRABADORA               │
+│                                     │
+│  ████████████░░░░░░░░  75%         │ Nivel
+│                                     │
+│      00:02:34 / 10:00              │ Tiempo
+│                                     │
+│  [🎵]  [⏸️]  [⏹️]  [📁]           │ Controles
+└─────────────────────────────────────┘
+
+Controles:
+🎵 Calidad    - Alta/Media/Baja
+⏸️ Pausar     - Pausar grabación
+⏹️ Detener    - Finalizar y guardar
+📁 Archivos   - Ver grabaciones
+```
+
+**Pasos**:
+1. Selecciona calidad de audio (🎵)
+2. Presiona grabar (🔴)
+3. Habla cerca del micrófono
+4. Pausa si necesitas (⏸️)
+5. Detén para guardar (⏹️)
+
+### Gestionar Archivos
+
+**Galería de Fotos**:
+- 📱 Toca una foto para verla en pantalla completa
+- 🔍 Pellizca para hacer zoom
+- ✏️ Toca el ícono de edición para recortar/rotar
+- 🗑️ Mantén presionado para eliminar
+- 📤 Usa el botón compartir para enviar
+
+**Lista de Audios**:
+- ▶️ Toca para reproducir
+- ⏸️ Pausa durante reproducción
+- 🔊 Arrastra la barra para cambiar posición
+- ✏️ Toca el nombre para renombrar
+- 📤 Comparte mediante apps
+
+### Organización
+
+**Crear Álbumes**:
+1. En galería, presiona ⋮ (menú)
+2. Selecciona "Crear álbum"
+3. Asigna nombre
+4. Selecciona fotos/audios para agregar
+
+**Agregar Etiquetas**:
+1. Abre foto/audio
+2. Toca ⓘ (información)
+3. Presiona "Agregar etiqueta"
+4. Escribe etiquetas separadas por coma
+
+**Búsqueda**:
+- 🔍 Usa el buscador en galería
+- Busca por: nombre, fecha, etiqueta, álbum
+
+---
+
+## 🔒 Seguridad y Privacidad
+
+### Prácticas Implementadas
+
+1. **Permisos en Runtime**
+   - Solicitud explicada al usuario
+   - Solo se solicitan cuando son necesarios
+   - Funcionalidad degradada si se niegan
+
+2. **Almacenamiento Seguro**
+   - Uso de Scoped Storage (Android 10+)
+   - Archivos privados en directorio de app
+   - Datos sensibles en Room Database encriptada
+
+3. **Metadatos Privados**
+   - Ubicación GPS solo si el usuario lo habilita
+   - Metadatos EXIF limpiables antes de compartir
+
+
+
+
+
+
+
+
+
+
+
+
 
