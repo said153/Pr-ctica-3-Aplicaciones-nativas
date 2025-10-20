@@ -1,13 +1,9 @@
 # 📷🎙️ Práctica 3 - Aplicaciones Nativas  
 ## Aplicación de Cámara y Micrófono para Android  
 
----
-
 ## 📋 Descripción General  
 Aplicación nativa de Android que integra funcionalidades avanzadas de **captura fotográfica**, **grabación de audio** y **gestión multimedia**.  
 Diseñada con una interfaz moderna que soporta **dos temas (Guinda y Azul)** con adaptación automática a **modo claro/oscuro**.
-
----
 
 ## ✨ Características Principales  
 
@@ -16,8 +12,6 @@ Diseñada con una interfaz moderna que soporta **dos temas (Guinda y Azul)** con
 - **Galería Integrada:** Visualizador de imágenes con edición básica y reproductor de audio  
 - **Gestión de Archivos:** Almacenamiento organizado con MediaStore y base de datos Room  
 - **Temas Personalizables:** Soporte para modo claro/oscuro en colores Guinda y Azul  
-
----
 
 ## 🔧 Requisitos del Sistema  
 
@@ -28,8 +22,6 @@ Diseñada con una interfaz moderna que soporta **dos temas (Guinda y Azul)** con
 - **API Mínima:** Android 7.0 (API 24)  
 - **API Target:** Android 13 (API 33) o superior  
 - **Kotlin:** 1.8.0+  
-
----
 
 ## 📦 Dependencias Principales  
 
