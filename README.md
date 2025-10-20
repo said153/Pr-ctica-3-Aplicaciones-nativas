@@ -635,8 +635,10 @@ MultiProvider(
 - GalleryProvider: Maneja la galería de fotos y medios.
 
 
+# Video y captura de su implementacion
 
-
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_377ade93](https://github.com/user-attachments/assets/bd789db0-9506-4daa-8490-c5443f269ba4)
+![Imagen de WhatsApp 2025-10-20 a las 10 16 18_48a47876](https://github.com/user-attachments/assets/89dbbaba-72b5-488f-a88d-fd32cee91407)
 
 
 
