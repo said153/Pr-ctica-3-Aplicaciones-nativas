@@ -371,7 +371,7 @@ Guarda metadatos en Room DB:
   • URI, fecha, ubicación, etiquetas
   • Configuración usada (flash, filtro, lente)
       ↓
-Muestra miniatura + Feedback háptico
+Muestra miniatura 
       ↓
 Usuario puede:
   • Ver en galería
@@ -409,7 +409,7 @@ Al detener:
       ↓
   Registra en MediaStore
       ↓
-  Guarda metadatos en Room DB:
+  Guarda metadatos en  DB:
     • URI, duración, calidad, fecha
       ↓
   Muestra en lista de grabaciones
@@ -445,10 +445,10 @@ Usuario puede:
 ### Capturar Fotos
 ```
 ┌─────────────────────────────────────┐
-│  [⚙️]              [🔄]        [⚡]  │ Configuración
+│  [⚙️]            [🔄]        [⚡]  │ Configuración
 │                                     │
 │                                     │
-│          📷 PREVISUALIZACIÓN        │
+│          📷 PREVISUALIZACIÓN       │
 │                                     │
 │                                     │
 │  [🎨]  [⏱️]  [📸]  [🖼️]           │ Controles
@@ -473,11 +473,11 @@ Controles:
 ### Grabar Audio
 ```
 ┌─────────────────────────────────────┐
-│         🎙️ GRABADORA               │
+│         🎙️ GRABADORA                │
 │                                     │
-│  ████████████░░░░░░░░  75%         │ Nivel
+│  ████████████░░░░░░░░  75%          │ Nivel
 │                                     │
-│      00:02:34 / 10:00              │ Tiempo
+│      00:02:34 / 10:00               │ Tiempo
 │                                     │
 │  [🎵]  [⏸️]  [⏹️]  [📁]           │ Controles
 └─────────────────────────────────────┘
@@ -544,7 +544,6 @@ Controles:
 2. **Almacenamiento Seguro**
    - Uso de Scoped Storage (Android 10+)
    - Archivos privados en directorio de app
-   - Datos sensibles en Room Database encriptada
 
 3. **Metadatos Privados**
    - Ubicación GPS solo si el usuario lo habilita
