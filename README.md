@@ -55,3 +55,16 @@ implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
 - Build > Sync Project with Gradle Files
 ### Compilar APK
 - Build > Build Bundle(s) / APK(s) > Build APK(s)
+
+## 🔐 Permisos Requeridos  
+
+| Permiso | Justificación |
+|----------|----------------|
+| `CAMERA` | Captura de fotos con cámara frontal/trasera |
+| `RECORD_AUDIO` | Grabación de audio con micrófono |
+| `WRITE_EXTERNAL_STORAGE` | Guardar fotos/audio|
+| `READ_EXTERNAL_STORAGE` | Leer galería multimedia |
+| `READ_MEDIA_IMAGES` | Acceso a imágenes |
+| `READ_MEDIA_AUDIO` | Acceso a archivos de audio  |
+| `VIBRATE` | Feedback háptico en captura |
+| `WAKE_LOCK` | Mantener pantalla activa durante grabación |
