@@ -68,3 +68,102 @@ implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
 | `READ_MEDIA_AUDIO` | Acceso a archivos de audio  |
 | `VIBRATE` | Feedback háptico en captura |
 | `WAKE_LOCK` | Mantener pantalla activa durante grabación |
+
+## 🔐 Permisos en Tiempo de Ejecución  
+
+```Dart
+// Solicitud de permisos en tiempo de ejecución
+private fun requestPermissions() {
+    val permissions = mutableListOf<String>().apply {
+        add(Manifest.permission.CAMERA)
+        add(Manifest.permission.RECORD_AUDIO)
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            add(Manifest.permission.READ_MEDIA_IMAGES)
+            add(Manifest.permission.READ_MEDIA_AUDIO)
+        } else {
+            add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+    }
+    
+    ActivityCompat.requestPermissions(this, permissions.toTypedArray(), REQUEST_CODE)
+}
+```
+## 🏗️ Arquitectura Técnica
+### Patrón MVVM (Model-View-ViewModel)
+
+📁 app/src/main/java/com/tuapp/
+├── 📁 data/
+│   ├── 📁 local/
+│   │   ├── AppDatabase.kt          # Configuración Room
+│   │   ├── dao/
+│   │   │   ├── PhotoDao.kt         # DAO para fotos
+│   │   │   └── AudioDao.kt         # DAO para audios
+│   │   └── entities/
+│   │       ├── PhotoEntity.kt      # Entidad de foto
+│   │       └── AudioEntity.kt      # Entidad de audio
+│   └── 📁 repository/
+│       ├── CameraRepository.kt     # Repositorio cámara
+│       └── AudioRepository.kt      # Repositorio audio
+│
+├── 📁 domain/
+│   ├── 📁 models/
+│   │   ├── Photo.kt                # Modelo de foto
+│   │   └── AudioRecord.kt          # Modelo de audio
+│   └── 📁 usecases/
+│       ├── CapturePhotoUseCase.kt
+│       └── RecordAudioUseCase.kt
+│
+├── 📁 ui/
+│   ├── 📁 camera/
+│   │   ├── CameraFragment.kt
+│   │   └── CameraViewModel.kt
+│   ├── 📁 audio/
+│   │   ├── AudioRecorderFragment.kt
+│   │   └── AudioViewModel.kt
+│   └── 📁 gallery/
+│       ├── GalleryFragment.kt
+│       └── GalleryViewModel.kt
+│
+└── 📁 utils/
+    ├── CameraXHelper.kt            # Utilidades CameraX
+    ├── MediaStoreHelper.kt         # Gestión MediaStore
+    └── PermissionHelper.kt         # Gestión de permisos
+
+## 🧩 Diagrama de Arquitectura
+
+┌─────────────────────────────────────────────────┐
+│                    UI Layer                     │
+│  ┌─────────────┐  ┌──────────────┐  ┌────────┐ │
+│  │   Camera    │  │    Audio     │  │Gallery │ │
+│  │  Fragment   │  │   Recorder   │  │Fragment│ │
+│  └──────┬──────┘  └──────┬───────┘  └───┬────┘ │
+└─────────┼─────────────────┼──────────────┼──────┘
+          │                 │              │
+          ▼                 ▼              ▼
+┌─────────────────────────────────────────────────┐
+│                ViewModel Layer                  │
+│  ┌─────────────┐  ┌──────────────┐  ┌────────┐ │
+│  │   Camera    │  │    Audio     │  │Gallery │ │
+│  │  ViewModel  │  │   ViewModel  │  │ViewModel│ │
+│  └──────┬──────┘  └──────┬───────┘  └───┬────┘ │
+└─────────┼─────────────────┼──────────────┼──────┘
+          │                 │              │
+          ▼                 ▼              ▼
+┌─────────────────────────────────────────────────┐
+│              Repository Layer                   │
+│  ┌─────────────┐  ┌──────────────┐             │
+│  │   Camera    │  │    Audio     │             │
+│  │ Repository  │  │  Repository  │             │
+│  └──────┬──────┘  └──────┬───────┘             │
+└─────────┼─────────────────┼─────────────────────┘
+          │                 │
+          ▼                 ▼
+┌─────────────────────────────────────────────────┐
+│               Data Layer                        │
+│  ┌─────────────┐  ┌──────────────┐  ┌────────┐ │
+│  │    Room     │  │ MediaStore   │  │  File  │ │
+│  │  Database   │  │     API      │  │ System │ │
+│  └─────────────┘  └──────────────┘  └────────┘ │
+└─────────────────────────────────────────────────┘
