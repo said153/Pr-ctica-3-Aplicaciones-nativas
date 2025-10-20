@@ -36,13 +36,6 @@ implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
 ```
 
 # 📥 Instrucciones de Instalación
-## 🧩 Instalación desde APK
-
-###Descargar el APK:
-
-- 📦 CamaraAudioApp-v1.0-guinda.apk
-- 📦 CamaraAudioApp-v1.0-azul.apk
-
 ### Habilitar instalación de fuentes desconocidas:
 
 - Ir a: Configuración > Seguridad > Fuentes desconocidas ✅
