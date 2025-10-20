@@ -563,7 +563,7 @@ Controles:
    - Solo se solicitan cuando son necesarios
    - Funcionalidad degradada si se niegan
 
-**Funcionalidades Iniciales**:
+# Funcionalidades Iniciales:
 - ✅ Captura de fotos con CameraX
 - ✅ Filtros fotográficos básicos
 - ✅ Grabación de audio con calidad configurable
@@ -576,6 +576,63 @@ Controles:
 - ✅ Compartir archivos multimedia
 - ✅ Feedback háptico y visual
 
+# 🔧 Configuración Android
+
+## Permisos en AndroidManifest.xml
+Para que la aplicación funcione correctamente con **cámara, audio y almacenamiento**, se agregan los siguientes permisos:
+
+```xml
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+## main.dart - Configuración Principal
+
+El archivo main.dart inicializa la base de datos, solicita permisos y arranca la app:
+
+```dart
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.instance.database;
+  await _requestPermissions();
+  runApp(const Practica3App());
+}
+
+Future<void> _requestPermissions() async {
+  await [
+    Permission.camera,
+    Permission.microphone,
+    Permission.storage,
+    Permission.photos,
+  ].request();
+}
+
+```
+
+## Estructura de Providers
+
+Se utiliza MultiProvider para manejar el estado global de la aplicación:
+```dart
+MultiProvider(
+  providers: [
+    ChangeNotifierProvider(create: (_) => ThemeProvider()),
+    ChangeNotifierProvider(create: (_) => CameraProvider()),
+    ChangeNotifierProvider(create: (_) => AudioProvider()),
+    ChangeNotifierProvider(create: (_) => GalleryProvider()),
+  ],
+)
+```
+- ThemeProvider: Controla el tema de la app (Guinda/Azul).
+
+- CameraProvider: Maneja la cámara y captura de imágenes.
+
+- AudioProvider: Gestiona grabación y reproducción de audio.
+
+- GalleryProvider: Maneja la galería de fotos y medios.
 
 
 
