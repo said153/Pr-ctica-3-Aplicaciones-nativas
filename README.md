@@ -669,7 +669,12 @@ MultiProvider(
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 31_73f0e715](https://github.com/user-attachments/assets/a681be94-2d63-4f78-b883-db3eb63e62a3)
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 32_5f8b1bff](https://github.com/user-attachments/assets/e196e963-aab7-421e-9d35-48d252f32e99)
 ![Imagen de WhatsApp 2025-10-20 a las 10 16 32_752f455d](https://github.com/user-attachments/assets/2636da4d-fdc1-4c10-a9a1-e5b89476b200)
-https://github.com/user-attachments/assets/6af29bb3-ab78-447c-9ff5-d4bfc22b8c51
+
+
+
+
+
+https://github.com/user-attachments/assets/702e0fbb-66ec-4cdc-999d-b79b421d48c5
 
 
 
