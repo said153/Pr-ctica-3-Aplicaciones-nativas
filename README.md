@@ -35,38 +35,30 @@ implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
 implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
 ```
 
-📥 Instrucciones de Instalación
-🧩 Instalación desde APK
+#📥 Instrucciones de Instalación
+##🧩 Instalación desde APK
 
-Descargar el APK:
+###Descargar el APK:
 
-📦 CamaraAudioApp-v1.0-guinda.apk
+-📦 CamaraAudioApp-v1.0-guinda.apk
+-📦 CamaraAudioApp-v1.0-azul.apk
 
-📦 CamaraAudioApp-v1.0-azul.apk
+###Habilitar instalación de fuentes desconocidas:
 
-Habilitar instalación de fuentes desconocidas:
+-Ir a: Configuración > Seguridad > Fuentes desconocidas ✅
+-Instalar el APK:
+-Abrir el archivo descargado
+-Pulsar “Instalar”
+-Esperar confirmación
+-Conceder permisos al iniciar (ver sección de permisos dentro de la app).
 
-Ir a: Configuración > Seguridad > Fuentes desconocidas ✅
+#💻 Compilación desde Código Fuente
+## Clonar el repositorio
+-git clone https://github.com/said153/Pr-ctica-3-Aplicaciones-nativas.git
 
-Instalar el APK:
-
-Abrir el archivo descargado
-
-Pulsar “Instalar”
-
-Esperar confirmación
-
-Conceder permisos al iniciar (ver sección de permisos dentro de la app).
-
-💻 Compilación desde Código Fuente
-# Clonar el repositorio
-git clone https://github.com/said153/Pr-ctica-3-Aplicaciones-nativas.git
-
-# Abrir en Android Studio
-# File > Open > Seleccionar carpeta del proyecto
-
-# Sincronizar Gradle
-# Build > Sync Project with Gradle Files
-
-# Compilar APK
-# Build > Build Bundle(s) / APK(s) > Build APK(s)
+## Abrir en Android Studio
+### File > Open > Seleccionar carpeta del proyecto
+-Sincronizar Gradle
+-Build > Sync Project with Gradle Files
+###Compilar APK
+-Build > Build Bundle(s) / APK(s) > Build APK(s)
