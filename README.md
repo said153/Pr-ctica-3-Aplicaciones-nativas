@@ -91,8 +91,9 @@ private fun requestPermissions() {
 }
 ```
 ## 🏗️ Arquitectura Técnica
-### Patrón MVVM (Model-View-ViewModel)
 
+### Patrón MVVM (Model-View-ViewModel)
+```
 📁 app/src/main/java/com/tuapp/
 ├── 📁 data/
 │   ├── 📁 local/
@@ -130,9 +131,10 @@ private fun requestPermissions() {
     ├── CameraXHelper.kt            # Utilidades CameraX
     ├── MediaStoreHelper.kt         # Gestión MediaStore
     └── PermissionHelper.kt         # Gestión de permisos
+```
 
-## 🧩 Diagrama de Arquitectura
-
+### Diagrama de Arquitectura
+```
 ┌─────────────────────────────────────────────────┐
 │                    UI Layer                     │
 │  ┌─────────────┐  ┌──────────────┐  ┌────────┐ │
@@ -167,3 +169,4 @@ private fun requestPermissions() {
 │  │  Database   │  │     API      │  │ System │ │
 │  └─────────────┘  └──────────────┘  └────────┘ │
 └─────────────────────────────────────────────────┘
+```
