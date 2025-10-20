@@ -243,4 +243,15 @@ lib/
 │ _screen         │ │ settings_screen │
 └─────────────────┘ └─────────────────┘
 ```
-
+## 📸 Funcionalidades de Cámara
+# Características Implementadas
+```
+| Función        | Descripción                             |
+|----------------|-----------------------------------------|
+| Previsualización | Vista en tiempo real de la cámara      |
+| Captura         | Tomar foto con calidad máxima           |
+| Flash           | Auto / On / Off                         |
+| Temporizador    | 3 / 5 / 10 segundos                     |
+| Cambio cámara   | Frontal ↔ Trasera                        |
+| Filtros         | Escala de grises, Sepia, Brillo        |
+```
