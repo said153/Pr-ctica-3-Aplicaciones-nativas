@@ -82,8 +82,7 @@ class Practica3App extends StatelessWidget {
 
             // Usar modo oscuro según configuración
             themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-
-            home: const HomeScreen(),
+            home: HomeScreen(),
           );
         },
       ),

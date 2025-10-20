@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:image/image.dart' as img;
 import 'package:gal/gal.dart';
 import '../database/database_helper.dart';
+import '../services/haptic_feedback_service.dart';
 
 class CameraProvider with ChangeNotifier {
   CameraController? _controller;
@@ -39,6 +40,7 @@ class CameraProvider with ChangeNotifier {
   bool get burstMode => _burstMode;
   int get burstCount => _burstCount;
   int get countdownValue => _countdownValue;
+  String get imageFormat => _imageFormat;  // ← AGREGAR ESTA LÍNEA
 
   /// Inicializar la cámara con configuración optimizada
   Future<void> initCamera() async {
@@ -214,6 +216,15 @@ class CameraProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  /// NUEVO: Establecer formato de imagen
+  void setImageFormat(String format) {
+    if (format == 'jpeg' || format == 'png') {
+      _imageFormat = format;
+      notifyListeners();
+      debugPrint('📷 Formato de imagen: ${format.toUpperCase()}');
+    }
+  }
+
   /// Aplicar filtro a imagen
   Future<Uint8List> _applyFilter(Uint8List imageBytes, String filterName) async {
     try {
@@ -309,6 +320,9 @@ class CameraProvider with ChangeNotifier {
     // Capturar foto
     XFile photo = await _controller!.takePicture();
 
+    // NUEVO: Feedback háptico y sonoro
+    await HapticFeedbackService.photoCaptureFeedback();
+
     // Apagar flash inmediatamente
     await _setFlashMode(FlashMode.off);
 
@@ -355,12 +369,19 @@ class CameraProvider with ChangeNotifier {
       // Generar nombre de archivo
       final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
       final burstSuffix = burstIndex != null ? '_burst$burstIndex' : '';
-      final filename = 'IMG_$timestamp$burstSuffix.jpg';
+      final extension = _imageFormat == 'png' ? 'png' : 'jpg';
+      final filename = 'IMG_$timestamp$burstSuffix.$extension';
 
       // Guardar en almacenamiento local
       final Directory appDir = await getApplicationDocumentsDirectory();
       final String imagePath = '${appDir.path}/$filename';
       await File(imagePath).writeAsBytes(imageBytes);
+      // Codificar según formato seleccionado
+      final Uint8List encodedBytes = _imageFormat == 'png'
+          ? Uint8List.fromList(img.encodePng(img.decodeImage(imageBytes)!))
+          : imageBytes;
+
+      await File(imagePath).writeAsBytes(encodedBytes);
 
       // Guardar en galería del sistema con GAL
       await Gal.putImageBytes(imageBytes, album: 'Practica3');

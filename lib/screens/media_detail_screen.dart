@@ -10,6 +10,7 @@ import '../services/exif_service.dart';
 import '../services/image_editor_service.dart';
 import '../services/share_service.dart';
 import 'tag_management_screen.dart';
+import 'image_editor_screen.dart'; // ← AGREGAR ESTA LÍNEA
 
 /// Pantalla de detalle de medio (imagen o audio)
 class MediaDetailScreen extends StatefulWidget {
@@ -44,18 +45,11 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
           overflow: TextOverflow.ellipsis,
         ),
         actions: [
-          // BOTONES DE EDICIÓN (solo para imágenes)
           if (isImage) ...[
-            PopupMenuButton<String>(
+            IconButton(
               icon: const Icon(Icons.edit),
+              onPressed: () => _openImageEditor(context),
               tooltip: 'Editar imagen',
-              itemBuilder: (context) => [
-                const PopupMenuItem(value: 'rotate_90', child: Text('Rotar 90°')),
-                const PopupMenuItem(value: 'rotate_180', child: Text('Rotar 180°')),
-                const PopupMenuItem(value: 'rotate_270', child: Text('Rotar 270°')),
-                const PopupMenuItem(value: 'crop', child: Text('Recortar imagen')),
-              ],
-              onSelected: (value) => _handleImageEdit(context, value),
             ),
           ],
 
@@ -282,174 +276,6 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
     }
   }
 
-  Future<String?> _showCropOptionsDialog(BuildContext context) async {
-    return await showDialog<String>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Tipo de Recorte'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.crop_square),
-              title: const Text('Cuadrado'),
-              subtitle: const Text('Recorte 1:1 centrado'),
-              onTap: () => Navigator.pop(context, 'square'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.crop_portrait),
-              title: const Text('Retrato'),
-              subtitle: const Text('Formato 9:16'),
-              onTap: () => Navigator.pop(context, 'portrait'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.crop_landscape),
-              title: const Text('Paisaje'),
-              subtitle: const Text('Formato 16:9'),
-              onTap: () => Navigator.pop(context, 'landscape'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.crop_free),
-              title: const Text('Personalizado'),
-              subtitle: const Text('Recorte del 20% de bordes'),
-              onTap: () => Navigator.pop(context, 'custom'),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancelar'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Manejar edición de imagen
-  /// Manejar edición de imagen
-  void _handleImageEdit(BuildContext context, String action) async {
-    try {
-      String? newPath;
-
-      // Mostrar indicador de carga
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (context) => AlertDialog(
-          content: Row(
-            children: [
-              const CircularProgressIndicator(),
-              const SizedBox(width: 16),
-              Text(action == 'crop' ? 'Recortando imagen...' : 'Rotando imagen...'),
-            ],
-          ),
-        ),
-      );
-
-      if (action == 'crop') {
-        // Cerrar diálogo de carga antes de mostrar opciones
-        if (mounted) Navigator.pop(context);
-
-        // Mostrar opciones de recorte
-        final cropOption = await _showCropOptionsDialog(context);
-        if (cropOption == null) return; // Usuario canceló
-
-        // Mostrar indicador de carga nuevamente
-        if (mounted) {
-          showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) => const AlertDialog(
-              content: Row(
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(width: 16),
-                  Text('Recortando imagen...'),
-                ],
-              ),
-            ),
-          );
-        }
-
-        // RECORTAR IMAGEN con la opción seleccionada
-        newPath = await ImageEditorService.cropImage(widget.media['path'], cropOption);
-      } else {
-        // ROTAR IMAGEN
-        int degrees = 0;
-        switch (action) {
-          case 'rotate_90':
-            degrees = 90;
-            break;
-          case 'rotate_180':
-            degrees = 180;
-            break;
-          case 'rotate_270':
-            degrees = 270;
-            break;
-        }
-
-        if (degrees > 0) {
-          newPath = await ImageEditorService.rotateImage(widget.media['path'], degrees);
-        }
-      }
-
-      // Cerrar diálogo de carga
-      if (mounted) Navigator.pop(context);
-
-      // Actualizar si se obtuvo nueva imagen
-      if (newPath != null && mounted) {
-        // Actualizar en base de datos
-        await DatabaseHelper.instance.updateMedia(widget.media['id'], {
-          'path': newPath,
-          'name': newPath.split('/').last,
-        });
-
-        // Recargar galería
-        final galleryProvider = Provider.of<GalleryProvider>(context, listen: false);
-        await galleryProvider.loadMedia();
-
-        // Actualizar widget.media para reflejar cambios
-        widget.media['path'] = newPath;
-        widget.media['name'] = newPath.split('/').last;
-
-        setState(() {}); // Refrescar la vista actual
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('✅ Imagen ${action == 'crop' ? 'recortada' : 'rotada'} correctamente')),
-        );
-      } else if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('❌ Error al procesar la imagen')),
-        );
-      }
-    } catch (e) {
-      // Cerrar diálogo de carga si existe
-      if (mounted) Navigator.pop(context);
-
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('❌ Error: $e')),
-        );
-      }
-    }
-  }
-
-
-  void _updateMediaInDatabase(BuildContext context, String newPath, String action) async {
-    final galleryProvider = Provider.of<GalleryProvider>(context, listen: false);
-    await DatabaseHelper.instance.updateMedia(widget.media['id'], {
-      'path': newPath,
-      'name': newPath.split('/').last,
-    });
-
-    await galleryProvider.loadMedia();
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('✅ Imagen $action correctamente')),
-    );
-  }
-
   /// Eliminar medio
   void _deleteMedia() {
     showDialog(
@@ -488,6 +314,14 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
             child: const Text('Eliminar'),
           ),
         ],
+      ),
+    );
+  }
+  void _openImageEditor(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ImageEditorScreen(media: widget.media),
       ),
     );
   }

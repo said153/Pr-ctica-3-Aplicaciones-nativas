@@ -6,6 +6,7 @@ import 'package:record/record.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 import '../database/database_helper.dart';
+import '../services/haptic_feedback_service.dart';
 
 class AudioProvider with ChangeNotifier {
   final AudioRecorder _recorder = AudioRecorder();
@@ -107,6 +108,9 @@ class AudioProvider with ChangeNotifier {
         _startRecordTimer();
         _startAmplitudeMonitoring();
 
+        // NUEVO: Feedback de inicio de grabación
+        await HapticFeedbackService.recordStartFeedback();
+
         notifyListeners();
         debugPrint('✅ Grabación iniciada: $filename');
       } else {
@@ -174,6 +178,7 @@ class AudioProvider with ChangeNotifier {
 
       _recordDuration = 0;
       _amplitude = 0.0;
+      await HapticFeedbackService.recordStopFeedback();
       notifyListeners();
 
     } catch (e) {

@@ -4,6 +4,9 @@ import '../providers/gallery_provider.dart';
 import 'dart:io';
 import '../services/share_service.dart';
 import 'media_detail_screen.dart'; // ✅ AGREGAR ESTA IMPORTACIÓN
+import '../services/haptic_feedback_service.dart';
+import 'search_screen.dart';
+import '../services/export_service.dart';
 
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({Key? key}) : super(key: key);
@@ -54,6 +57,17 @@ class _GalleryScreenState extends State<GalleryScreen> with SingleTickerProvider
           ],
         ),
         actions: [
+          // NUEVO: Botón de búsqueda
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SearchScreen()),
+              );
+            },
+            tooltip: 'Buscar',
+          ),
           Consumer<GalleryProvider>(
             builder: (context, provider, _) {
               if (provider.hasSelection) {
@@ -64,6 +78,12 @@ class _GalleryScreenState extends State<GalleryScreen> with SingleTickerProvider
                       icon: const Icon(Icons.share),
                       tooltip: 'Compartir selección',
                       onPressed: () => _shareSelected(context, provider),
+                    ),
+                    // NUEVO: BOTÓN EXPORTAR SELECCIÓN
+                    IconButton(
+                      icon: const Icon(Icons.download),
+                      tooltip: 'Exportar selección',
+                      onPressed: () => _exportSelected(context, provider),
                     ),
                     IconButton(
                       icon: const Icon(Icons.folder_open),
@@ -109,6 +129,117 @@ class _GalleryScreenState extends State<GalleryScreen> with SingleTickerProvider
         tooltip: 'Crear nuevo álbum',
       )
           : null,
+    );
+  }
+
+  /// Exportar archivos seleccionados
+  Future<void> _exportSelected(BuildContext context, GalleryProvider provider) async {
+    try {
+      final selectedPaths = provider.selectedIndices
+          .where((index) => index < provider.mediaFiles.length)
+          .map((index) => provider.mediaFiles[index]['path'] as String)
+          .toList();
+
+      if (selectedPaths.isEmpty) return;
+
+      // Mostrar diálogo de progreso
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const AlertDialog(
+          content: Row(
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(width: 16),
+              Text('Exportando archivos...'),
+            ],
+          ),
+        ),
+      );
+
+      final success = await ExportService.exportFiles(selectedPaths);
+
+      if (context.mounted) {
+        Navigator.pop(context); // Cerrar diálogo de progreso
+        provider.clearSelection();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              success
+                  ? '✅ ${selectedPaths.length} archivo(s) exportado(s)'
+                  : '❌ Error al exportar archivos',
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('❌ Error: $e')),
+        );
+      }
+    }
+  }
+
+  /// Mostrar estadísticas de almacenamiento
+  Future<void> _showStorageStats(BuildContext context) async {
+    final provider = Provider.of<GalleryProvider>(context, listen: false);
+    final stats = await ExportService.getStorageStats(provider.mediaFiles);
+
+    if (context.mounted) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('📊 Estadísticas de Almacenamiento'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildStatRow('Total de archivos:', '${stats['totalFiles']}'),
+              const Divider(),
+              _buildStatRow('Imágenes:', '${stats['imageCount']} (${ExportService.formatBytes(stats['imageSize'])})'),
+              _buildStatRow('Audios:', '${stats['audioCount']} (${ExportService.formatBytes(stats['audioSize'])})'),
+              const Divider(),
+              _buildStatRow(
+                'Espacio total:',
+                ExportService.formatBytes(stats['totalSize']),
+                bold: true,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cerrar'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  Widget _buildStatRow(String label, String value, {bool bold = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -423,7 +554,8 @@ class _GalleryScreenState extends State<GalleryScreen> with SingleTickerProvider
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            onPressed: () {
+            onPressed: () async {
+              await HapticFeedbackService.heavyImpact();
               provider.deleteSelected();
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(

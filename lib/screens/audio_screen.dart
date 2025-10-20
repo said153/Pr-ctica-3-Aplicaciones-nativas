@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import '../providers/audio_provider.dart';
 import 'audio_player_screen.dart';
 import 'audio_player_screen_complete.dart';
+import '../services/haptic_feedback_service.dart';
 
 
 /// Pantalla de grabación de audio completa
@@ -159,8 +160,12 @@ class AudioScreen extends StatelessWidget {
   Widget _buildRecordingControls(BuildContext context, AudioProvider audioProvider) {
     if (!audioProvider.isRecording) {
       // Botón de iniciar grabación
+      // Botón de iniciar grabación
       return FloatingActionButton.large(
-        onPressed: () => audioProvider.startRecording(),
+        onPressed: () async {
+          await HapticFeedbackService.mediumImpact();
+          audioProvider.startRecording();
+        },
         backgroundColor: Colors.red,
         child: const Icon(Icons.fiber_manual_record, size: 48),
       );
@@ -170,9 +175,10 @@ class AudioScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        // Pausar/Reanudar
+        // Pausar/Reanuda
         FloatingActionButton(
-          onPressed: () {
+          onPressed: () async {
+            await HapticFeedbackService.lightImpact();
             if (audioProvider.isPaused) {
               audioProvider.resumeRecording();
             } else {
@@ -188,6 +194,7 @@ class AudioScreen extends StatelessWidget {
         // Detener y guardar automáticamente
         FloatingActionButton.large(
           onPressed: () async {
+            await HapticFeedbackService.heavyImpact();
             await audioProvider.stopRecording();
             if (context.mounted) {
               ScaffoldMessenger.of(context).showSnackBar(

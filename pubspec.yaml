@@ -25,9 +25,6 @@ dependencies:
   # Audio - REPRODUCCIÓN
   audioplayers: ^6.1.0
 
-  # Conversión de audio
-  ffmpeg_kit_flutter: ^6.0.3
-
   # Procesamiento de imágenes
   image: ^4.1.7
   exif: ^3.3.0
