@@ -25,35 +25,35 @@ Diseñada con una interfaz moderna que soporta **dos temas (Guinda y Azul)** con
 
 # 📦 Dependencias Principales
 ```
-| Categoría                  | Paquete / Versión        | Descripción |
-|-----------------------------|------------------------|------------|
-| **Flutter SDK**             | `flutter`              | Framework principal |
-| **Gestión de estado**       | `provider: ^6.1.2`     | Manejo de estados reactivos |
-| **Cámara y medios**         | `camera: ^0.10.5+9`    | Acceso a cámara y previsualización |
-|                             | `image_picker: ^1.0.7` | Selección de imágenes desde galería o cámara |
-|                             | `gal: ^2.3.2`          | Gestión de galería |
-|                             | `photo_manager: ^3.0.0`| Administración de fotos y permisos |
-| **Audio - grabación**       | `record: 5.1.2`        | Grabación de audio (versión fija por compatibilidad) |
-| **Audio - reproducción**    | `audioplayers: ^6.1.0` | Reproducción de archivos de audio |
-| **Procesamiento de imágenes** | `image: ^4.1.7`       | Manipulación de imágenes |
-|                             | `exif: ^3.3.0`         | Lectura de metadatos EXIF |
-| **Base de datos local**     | `sqflite: ^2.3.2`      | Base de datos SQLite |
-|                             | `path_provider: ^2.1.2`| Rutas locales para almacenamiento |
-|                             | `path: ^1.9.0`         | Manejo de rutas de archivos |
-| **Permisos**                | `permission_handler: ^11.4.0` | Solicitud de permisos en tiempo de ejecución |
-| **UI y utilidades**         | `intl: ^0.19.0`        | Internacionalización y formato de fechas |
-|                             | `shared_preferences: ^2.2.2` | Almacenamiento local ligero |
-| **Compartir archivos**      | `share_plus: ^7.2.2`   | Compartir archivos y contenido |
-| **Iconos**                  | `cupertino_icons: ^1.0.6` | Iconos estilo iOS |
+| Categoría                     | Paquete / Versión             | Descripción                                          |
+|-------------------------------|-------------------------------|------------------------------------------------------|
+| **Flutter SDK**               | `flutter`                     | Framework principal                                  |
+| **Gestión de estado**         | `provider: ^6.1.2`            | Manejo de estados reactivos                          |
+| **Cámara y medios**           | `camera: ^0.10.5+9`           | Acceso a cámara y previsualización                   |
+|                               | `image_picker: ^1.0.7`        | Selección de imágenes desde galería o cámara         |
+|                               | `gal: ^2.3.2`                 | Gestión de galería                                   |
+|                               | `photo_manager: ^3.0.0`       | Administración de fotos y permisos                   |
+| **Audio - grabación**         | `record: 5.1.2`               | Grabación de audio (versión fija por compatibilidad) |
+| **Audio - reproducción**      | `audioplayers: ^6.1.0`        | Reproducción de archivos de audio                    |
+| **Procesamiento de imágenes** | `image: ^4.1.7`               | Manipulación de imágenes                             |
+|                               | `exif: ^3.3.0`                | Lectura de metadatos EXIF                            |
+| **Base de datos local**       | `sqflite: ^2.3.2`             | Base de datos SQLite                                 |
+|                               | `path_provider: ^2.1.2`       | Rutas locales para almacenamiento                    |
+|                               | `path: ^1.9.0`                | Manejo de rutas de archivos                          |
+| **Permisos**                  | `permission_handler: ^11.4.0` | Solicitud de permisos en tiempo de ejecución         |
+| **UI y utilidades**           | `intl: ^0.19.0`               | Internacionalización y formato de fechas             |
+|                               | `shared_preferences: ^2.2.2`  | Almacenamiento local ligero                          |
+| **Compartir archivos**        | `share_plus: ^7.2.2`          | Compartir archivos y contenido                       |
+| **Iconos**                    | `cupertino_icons: ^1.0.6`     | Iconos estilo iOS                                    |
 ```
 
 
 ## 🛠 Dev Dependencies
 ```
-| Paquete                     | Descripción |
-|-----------------------------|------------|
-| `flutter_test`              | Framework para pruebas unitarias |
-| `flutter_lints: ^3.0.1`    | Reglas de linting y buenas prácticas |
+| Paquete                     | Descripción                          |
+|-----------------------------|--------------------------------------|
+| `flutter_test`              | Framework para pruebas unitarias     |
+| `flutter_lints: ^3.0.1`     | Reglas de linting y buenas prácticas |
 
 ```
 
