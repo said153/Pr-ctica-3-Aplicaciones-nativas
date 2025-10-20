@@ -246,12 +246,65 @@ lib/
 ## 📸 Funcionalidades de Cámara
 # Características Implementadas
 ```
-| Función        | Descripción                             |
-|----------------|-----------------------------------------|
-| Previsualización | Vista en tiempo real de la cámara      |
-| Captura         | Tomar foto con calidad máxima           |
-| Flash           | Auto / On / Off                         |
-| Temporizador    | 3 / 5 / 10 segundos                     |
-| Cambio cámara   | Frontal ↔ Trasera                        |
-| Filtros         | Escala de grises, Sepia, Brillo        |
+| Función            | Descripción                             |
+|--------------------|-----------------------------------------|
+| Previsualización   | Vista en tiempo real de la cámara       |
+| Captura            | Tomar foto con calidad máxima           |
+| Flash              | Auto / On / Off                         |
+| Temporizador       | 3 / 5 / 10 segundos                     |
+| Cambio cámara      | Frontal ↔ Trasera                       |
+| Filtros            | Escala de grises, Sepia, Brillo         |
 ```
+### Esquema de Base de Datos
+```
+┌─────────────────────────────────────┐
+│            photos                   │
+├─────────────────────────────────────┤
+│ id (PK)          LONG               │
+│ uri              STRING             │
+│ fileName         STRING             │
+│ dateTaken        LONG               │
+│ location         STRING (nullable)  │
+│ tags             STRING (nullable)  │
+│ filterApplied    STRING (nullable)  │
+│ cameraLens       STRING             │
+│ flashMode        STRING             │
+│ album            STRING (nullable)  │
+└─────────────────────────────────────┘
+
+┌─────────────────────────────────────┐
+│         audio_records               │
+├─────────────────────────────────────┤
+│ id (PK)          LONG               │
+│ uri              STRING             │
+│ fileName         STRING             │
+│ dateRecorded     LONG               │
+│ duration         LONG               │
+│ quality          STRING             │
+│ tags             STRING (nullable)  │
+│ album            STRING (nullable)  │
+└─────────────────────────────────────┘
+```
+# 🎨 Interfaz de Usuario
+
+## Sistema de Temas
+La aplicación implementa dos temas personalizados (**Guinda** y **Azul**) con soporte completo para modo claro y oscuro.
+
+---
+
+### Tema Guinda
+
+#### themes.xml - Tema Guinda Claro
+```xml
+<style name="Theme.CameraApp.Guinda" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <item name="colorPrimary">@color/guinda_primary</item>
+    <item name="colorPrimaryVariant">@color/guinda_dark</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <item name="colorSecondary">@color/guinda_accent</item>
+    <item name="colorSecondaryVariant">@color/guinda_accent_dark</item>
+    <item name="colorOnSecondary">@color/white</item>
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+</style>
+
+
+
