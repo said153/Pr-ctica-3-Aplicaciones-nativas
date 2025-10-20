@@ -305,6 +305,40 @@ La aplicación implementa dos temas personalizados (**Guinda** y **Azul**) con s
     <item name="colorOnSecondary">@color/white</item>
     <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 </style>
+```
+#### colors.xml - Colores Guinda
+```xml
+<resources>
+    <color name="guinda_primary">#8B0000</color>
+    <color name="guinda_dark">#5D0000</color>
+    <color name="guinda_light">#B71C1C</color>
+    <color name="guinda_accent">#C62828</color>
+    <color name="guinda_accent_dark">#8E0000</color>
+</resources>
+```
 
+#### Tema Azul.
+```xml
+themes.xml - Tema Azul Claro
+<style name="Theme.CameraApp.Azul" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <item name="colorPrimary">@color/azul_primary</item>
+    <item name="colorPrimaryVariant">@color/azul_dark</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <item name="colorSecondary">@color/azul_accent</item>
+    <item name="colorSecondaryVariant">@color/azul_accent_dark</item>
+    <item name="colorOnSecondary">@color/white</item>
+</style>
+```
+
+#### colors.xml - Colores Azul
+```xml
+<resources>
+    <color name="azul_primary">#1565C0</color>
+    <color name="azul_dark">#0D47A1</color>
+    <color name="azul_light">#1976D2</color>
+    <color name="azul_accent">#2196F3</color>
+    <color name="azul_accent_dark">#1565C0</color>
+</resources>
+```
 
 
